@@ -4,7 +4,7 @@ import { ArrowLeft, PlayCircle } from "lucide-react";
 
 export default function Portfolio() {
   const projects = [
-    { id: 1, title: "Análise Dinâmica", desc: "Monitoramento de performance térmica em caldeiras de recuperação química com Python.", image: "/print1.png" },
+    { id: 1, title: "Análise eCiência de Dados", desc: "Monitoramento de performance térmica em caldeiras de recuperação química com Python.", image: "/print1.png" },
     { id: 2, title: "Modelos matemáticos e Físicos", desc: "Estrutura computacional para variáveis físicas e suas interações em processo do setor de papel e celulose.", image: "/correlacao.png" },
     { id: 3, title: "Qualidade de Software", desc: "Testes automatizados para garantir a qualidade do código.", image: "/qualidade.png" },
     { id: 4, title: "Desenvolvimento Web", desc: "Desenvolvimento de sites limpos, bem estruturados para funil de vendas, portfólio e conexão com seus clientes.", image: "/webdev.png" },
