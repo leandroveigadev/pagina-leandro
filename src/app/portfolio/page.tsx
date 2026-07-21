@@ -8,7 +8,7 @@ export default function Portfolio() {
     { id: 2, title: "Modelos matemáticos e Físicos", desc: "Estrutura computacional para variáveis físicas e suas interações em processo do setor de papel e celulose.", image: "/correlacao.png" },
     { id: 3, title: "Qualidade de Software", desc: "Testes automatizados para garantir a qualidade do código.", image: "/qualidade.png" },
     { id: 4, title: "Desenvolvimento Web", desc: "Desenvolvimento de sites limpos, bem estruturados para funil de vendas, portfólio e conexão com seus clientes.", image: "/webdev.png" },
-    { id: 5, title: "Camada para integração (API)", desc: "Criação de testes automatizados para garantir que o sistema não quebre, refatoração de código antigo seguindo padrões modernos (como o uso de microsserviços).", image: null },
+    { id: 5, title: "Fluxo de Integração de Sistemas", desc: "Camada de front-end que se conecta de forma segura a serviços externos e banco de dados.", image: "/front.png" },
     { id: 6, title: "Performance Ambiental", desc: "Cruzamento de dados ambientais para análise de impacto, alertas de compliance, relatórios de desempenho, visualização de resultados e evolução de arquitetura.", image: "/ambiental.png" },
   ];
 
