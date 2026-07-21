@@ -7,11 +7,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Leandro Veiga | Engenharia de Software e Arquitetura Limpa",
   description: "Desenvolvimento enxuto, código seguro, performance e arquitetura limpa.",
-  metadataBase: new URL("https://leandroveiga.dev"), // Altere para seu domínio ou o link da Vercel depois
+  metadataBase: new URL("https://leandroveiga.com.br"),
   openGraph: {
     title: "Leandro Veiga | Engenharia de Software",
     description: "Soluções robustas em engenharia de software, microsserviços e arquitetura limpa.",
-    url: "https://leandroveiga.dev",
+    url: "https://leandroveiga.com.br",
     siteName: "Leandro Veiga",
     locale: "pt_BR",
     type: "website",
