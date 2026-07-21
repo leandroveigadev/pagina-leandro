@@ -164,7 +164,7 @@ export default function Home() {
         <div className="w-full max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-zinc-100 tracking-tight">Vamos conversar.</h2>
-            <p className="text-zinc-400 text-lg">Preencha os dados abaixo que em breveentraremos em contato.</p>
+            <p className="text-zinc-400 text-lg">Preencha os dados abaixo que em breve entraremos em contato.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="p-8 rounded-3xl border border-zinc-800 bg-zinc-900/40 backdrop-blur-md shadow-2xl flex flex-col gap-6">
