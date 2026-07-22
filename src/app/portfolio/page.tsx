@@ -4,12 +4,12 @@ import { ArrowLeft, PlayCircle } from "lucide-react";
 
 export default function Portfolio() {
   const projects = [
-    { id: 1, title: "Dados e Informações", desc: "Monitoramento de performance térmica em caldeiras de recuperação química com Python.", image: "/print1.png" },
-    { id: 2, title: "Modelos matemáticos e Físicos", desc: "Estrutura computacional para variáveis físicas e suas interações em processo do setor de papel e celulose.", image: "/correlacao.png" },
-    { id: 3, title: "Qualidade de Software", desc: "Testes automatizados para garantir a qualidade do código.", image: "/qualidade.png" },
-    { id: 4, title: "Desenvolvimento Web", desc: "Desenvolvimento de sites limpos, bem estruturados para funil de vendas, portfólio e conexão com seus clientes.", image: "/webdev.png" },
-    { id: 5, title: "Fluxo de Integração de Sistemas", desc: "Camada de front-end que se conecta de forma segura a serviços externos e banco de dados.", image: "/front.png" },
-    { id: 6, title: "Performance Ambiental", desc: "Cruzamento de dados ambientais para análise de impacto, alertas de compliance, relatórios de desempenho, visualização de resultados e evolução de arquitetura.", image: "/ambiental.png" },
+    { id: 1, title: "Dados e Informações", desc: "Monitoramento de performance térmica.", image: "/print1.png" },
+    { id: 2, title: "Modelos", desc: "Estrutura computacional para variáveis físicas e suas interações com o processo.", image: "/correlacao.png" },
+    { id: 3, title: "Qualidade de Software", desc: "Testes automatizados para qualidade do código.", image: "/qualidade.png" },
+    { id: 4, title: "Desenvolvimento Web", desc: "Desenvolvimento de sites limpos,estruturados e portfólio para conexão com seus clientes.", image: "/webdev.png" },
+    { id: 5, title: "Fluxo de Integração de Sistemas", desc: "Camada front-end com serviços externos e banco de dados.", image: "/front.png" },
+    { id: 6, title: "Relatórios de Desempenho", desc: "Cruzamento de dados para análises de impacto, alertas de compliance, relatórios de desempenho e visualização de resultados.", image: "/ambiental.png" },
   ];
 
   return (

@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"; // Importação da telemetria da Vercel
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: "Leandro Veiga | Engenharia de Software e Arquitetura Limpa",
-  description: "Desenvolvimento enxuto, código seguro, performance e arquitetura limpa.",
+  title: "Leandro Veiga | Engenharia e Desenvolvimento Enxuto",
+  description: "Portfólio profissional de Leandro Veiga. Desenvolvimento de software com foco em performance, código seguro e arquitetura limpa.",
   metadataBase: new URL("https://leandroveiga.com.br"),
   openGraph: {
-    title: "Leandro Veiga | Engenharia de Software",
-    description: "Soluções robustas em engenharia de software, microsserviços e arquitetura limpa.",
+    title: "Leandro Veiga | Engenharia e Desenvolvimento Enxuto",
+    description: "Portfólio profissional de Leandro Veiga.",
     url: "https://leandroveiga.com.br",
     siteName: "Leandro Veiga",
     locale: "pt_BR",
@@ -25,8 +34,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
-      <body className={`${inter.className} bg-[#050505] text-white antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#050505] text-white`}
+      >
         {children}
+        
+        {/* Componente de Telemetria da Vercel injetado globalmente de forma segura */}
+        <Analytics />
       </body>
     </html>
   );
