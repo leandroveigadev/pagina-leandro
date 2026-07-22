@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Code2, Database, TerminalSquare, Send, ArrowUp, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Code2, Database, TerminalSquare, Send, ArrowUp, CheckCircle2, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Novo estado para o Menu Mobile
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,33 +93,59 @@ export default function Home() {
           <Database className="text-cyan-400/50" size={32} />
         </div>
         
-        {/* HEADER */}
-        <header className="absolute top-0 left-0 w-full flex justify-between items-center px-4 sm:px-8 py-6 text-sm font-medium z-50">
-           <div className="text-white text-lg font-bold tracking-widest shrink-0">
-             Tecno<span className="text-[#84cc16]">logia</span>
-           </div>
-           <nav className="flex items-center gap-6 md:gap-8 text-zinc-400">
-             <div className="hidden md:flex gap-6 mr-4">
-               <Link href="/sobre" className="hover:text-white hover:text-[#84cc16] transition-colors duration-300">Sobre</Link>
-               <Link href="/portfolio" className="hover:text-white hover:text-[#84cc16] transition-colors duration-300">Portfólio</Link>
-             </div>
-             
-             <div className="flex gap-4 md:border-l md:border-zinc-800 md:pl-6">
-               <a href="https://www.instagram.com/leandrooveiga/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition-all duration-300">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-               </a>
-               <a href="https://www.linkedin.com/in/leandro-veiga-bb4a9b383/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition-all duration-300">
-                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-               </a>
-             </div>
-           </nav>
+        {/* HEADER COM SUPORTE A MENU HAMBÚRGUER */}
+        <header className="absolute top-0 left-0 w-full z-50">
+          <div className="flex justify-between items-center px-4 sm:px-8 py-6 text-sm font-medium bg-[#050505]/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none border-b border-zinc-900 md:border-none">
+            <div className="text-white text-lg font-bold tracking-widest shrink-0 z-50">
+              Tecno<span className="text-[#84cc16]">logia</span>
+            </div>
+            
+            {/* Navegação Desktop */}
+            <nav className="hidden md:flex items-center gap-6 md:gap-8 text-zinc-400">
+              <div className="hidden md:flex gap-6 mr-4">
+                <Link href="/sobre" className="hover:text-white hover:text-[#84cc16] transition-colors duration-300">Sobre</Link>
+                <Link href="/portfolio" className="hover:text-white hover:text-[#84cc16] transition-colors duration-300">Portfólio</Link>
+              </div>
+              
+              <div className="flex gap-4 border-l border-zinc-800 pl-6">
+                <a href="https://www.instagram.com/leandrooveiga/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/leandro-veiga-bb4a9b383/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+              </div>
+            </nav>
+
+            {/* Ícones Mobile (Redes Sociais + Botão do Menu) */}
+            <div className="flex md:hidden items-center gap-5 text-zinc-400 z-50">
+              <a href="https://www.instagram.com/leandrooveiga/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/leandro-veiga-bb4a9b383/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+                className="text-zinc-300 hover:text-white focus:outline-none ml-1"
+                aria-label="Abrir menu"
+              >
+                {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Menu Dropdown Mobile com Animação Fluida */}
+          <div className={`md:hidden absolute top-full left-0 w-full bg-zinc-950/95 border-b border-zinc-800 backdrop-blur-xl transition-all duration-300 overflow-hidden flex flex-col items-center shadow-2xl ${isMobileMenuOpen ? 'max-h-48 py-6 opacity-100' : 'max-h-0 py-0 opacity-0'}`}>
+            <Link href="/sobre" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-zinc-300 hover:text-[#84cc16] mb-5 w-full text-center">Sobre</Link>
+            <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-zinc-300 hover:text-[#84cc16] w-full text-center">Portfólio</Link>
+          </div>
         </header>
 
-        {/* CONTAINER DO CONTEÚDO PRINCIPAL (Espaçamentos Corrigidos) */}
+        {/* CONTAINER DO CONTEÚDO PRINCIPAL */}
         <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-12 lg:gap-20 relative z-10 mt-16 md:mt-24">
           
           <div className="flex-1 flex flex-col items-center md:items-start w-full">
-            {/* TÍTULO CORRIGIDO PARA MOBILE (text-4xl, break-words) */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold tracking-tight leading-[1.1] mb-6 md:leading-[1.1] break-words w-full">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#84cc16] via-emerald-400 to-cyan-400">
                 Desenvolvimento
@@ -160,7 +187,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SEÇÃO 2: FORMULÁRIO DE CONTATO */}
+      {/* SEÇÃO 2: FORMULÁRIO DE CONTATO (Intacto) */}
       <section id="contato" className="w-full min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-32 relative z-10">
         <div className="w-full max-w-3xl mx-auto">
           <div className="text-center mb-12">
