@@ -29,7 +29,7 @@ export default function Sobre() {
             Sobre <span className="text-[#84cc16]">mim</span>
           </h1>
           <p className="text-zinc-400 text-lg leading-relaxed font-light">
-            Olá! Leandro Veiga aqui, sou da área de engenharia de software e focado em construir sistemas com arquitetura robusta e com performance. Minha jornada é guiada pelo compromisso com o <strong className="text-zinc-200 font-semibold">Código limpo</strong>, arquitetura inteligente e pela busca de melhoria contínua, e que seja aplicável ao seu negócio.
+            Olá! Leandro Veiga aqui. Sou da área de engenharia de software e construo sistemas com arquitetura robusta e com performance. Minha jornada é guiada pelo compromisso com o <strong className="text-zinc-200 font-semibold">Código limpo</strong>, arquitetura inteligente e melhoria contínua aplicável ao seu negócio.
           </p>
           <p className="text-zinc-400 text-base leading-relaxed font-light">
             Busco ser referência em ecossistemas de alta disponibilidade, atuo desde a modelagem de bancos de dados até a entrega final em produção, com entregas escaláveis e seguras. Acredito que um software bem escrito é o melhor investimento que uma empresa pode fazer.

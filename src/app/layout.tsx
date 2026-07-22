@@ -14,12 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Leandro Veiga | Engenharia e Desenvolvimento Enxuto",
-  description: "Portfólio profissional de Leandro Veiga. Desenvolvimento de software com foco em performance, código seguro e arquitetura limpa.",
+  title: "Leandro Veiga",
+  description: "Desenvolvimento de software.",
   metadataBase: new URL("https://leandroveiga.com.br"),
   openGraph: {
-    title: "Leandro Veiga | Engenharia e Desenvolvimento Enxuto",
-    description: "Portfólio profissional de Leandro Veiga.",
+    title: "Leandro Veiga",
+    description: "Desenvolvimento de software.",
     url: "https://leandroveiga.com.br",
     siteName: "Leandro Veiga",
     locale: "pt_BR",
