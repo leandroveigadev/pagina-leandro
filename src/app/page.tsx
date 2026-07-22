@@ -10,6 +10,7 @@ export default function Home() {
   const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Lógica de Scroll e Formulário Mantida 100% Intacta
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -44,7 +45,6 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Processamento assíncrono para evitar o reload da página
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -63,9 +63,8 @@ export default function Home() {
 
       if (data.success) {
         setStatusMessage("Mensagem enviada com sucesso! Em breve retornaremos.");
-        form.reset(); // Limpa os dados preenchidos
+        form.reset();
         
-        // Remove o aviso visual após 5 segundos (5000 milissegundos)
         setTimeout(() => {
           setStatusMessage("");
         }, 5000);
@@ -82,85 +81,90 @@ export default function Home() {
   return (
     <main className="bg-[#050505] text-white flex flex-col items-center relative overflow-x-hidden font-sans selection:bg-[#84cc16] selection:text-black">
       
-      {/* SEÇÃO 1: HERO (APRESENTAÇÃO PRINCIPAL) */}
+      {/* SEÇÃO 1: HERO */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-12">
-        <div className="absolute top-[10%] left-[20%] w-96 h-96 rounded-full bg-[#84cc16]/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[10%] right-[20%] w-[500px] h-[500px] rounded-full bg-cyan-600/10 blur-[150px] pointer-events-none" />
+        <div className="absolute top-[10%] left-[15%] w-96 h-96 rounded-full bg-[#84cc16]/10 blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[15%] w-[500px] h-[500px] rounded-full bg-cyan-600/10 blur-[160px] pointer-events-none" />
 
-        <div className="absolute top-[25%] left-[10%] md:left-[15%] w-16 h-16 rounded-2xl bg-zinc-900/40 border border-zinc-800/50 backdrop-blur-md flex items-center justify-center animate-pulse shadow-2xl hidden md:flex">
+        {/* Ícones flutuantes reposicionados para não sobrepor a foto */}
+        <div className="absolute top-[25%] left-[5%] md:left-[10%] w-16 h-16 rounded-2xl bg-zinc-900/40 border border-zinc-800/50 backdrop-blur-md flex items-center justify-center animate-pulse shadow-2xl hidden md:flex z-20">
           <Code2 className="text-[#84cc16]/50" size={28} />
         </div>
-        <div className="absolute bottom-[35%] right-[10%] md:right-[15%] w-20 h-20 rounded-full bg-zinc-900/40 border border-zinc-800/50 backdrop-blur-md flex items-center justify-center animate-pulse shadow-2xl hidden md:flex" style={{ animationDelay: '1s' }}>
+        <div className="absolute bottom-[20%] right-[10%] md:right-[5%] w-20 h-20 rounded-full bg-zinc-900/40 border border-zinc-800/50 backdrop-blur-md flex items-center justify-center animate-pulse shadow-2xl hidden lg:flex z-20" style={{ animationDelay: '1s' }}>
           <Database className="text-cyan-400/50" size={32} />
         </div>
-        <div className="absolute top-[40%] right-[25%] w-12 h-12 rounded-xl bg-zinc-900/40 border border-zinc-800/50 backdrop-blur-md flex items-center justify-center animate-pulse shadow-2xl hidden lg:flex" style={{ animationDelay: '0.5s' }}>
-          <TerminalSquare className="text-emerald-400/50" size={20} />
-        </div>
         
+        {/* HEADER ATUALIZADO: Links "Sobre" e "Portfólio" integrados ao topo */}
         <header className="absolute top-0 left-0 w-full flex justify-between items-center px-8 py-6 text-sm font-medium z-50">
            <div className="text-white text-lg font-bold tracking-widest">
              Tecno<span className="text-[#84cc16]">logia</span>
            </div>
-           <nav className="flex gap-6 text-zinc-500">
-             <a href="https://www.instagram.com/leandrooveiga/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition-all duration-300">
-               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-             </a>
-             <a href="https://www.linkedin.com/in/leandro-veiga-bb4a9b383/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition-all duration-300">
-               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-             </a>
+           <nav className="flex items-center gap-8 text-zinc-400">
+             <div className="hidden md:flex gap-6 mr-4">
+               <Link href="/sobre" className="hover:text-white hover:text-[#84cc16] transition-colors duration-300">Sobre</Link>
+               <Link href="/portfolio" className="hover:text-white hover:text-[#84cc16] transition-colors duration-300">Portfólio</Link>
+             </div>
+             
+             <div className="flex gap-4 border-l border-zinc-800 pl-6">
+               <a href="https://www.instagram.com/leandrooveiga/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition-all duration-300">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+               </a>
+               <a href="https://www.linkedin.com/in/leandro-veiga-bb4a9b383/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition-all duration-300">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+               </a>
+             </div>
            </nav>
         </header>
 
-        <div className="max-w-5xl w-full flex flex-col items-center text-center relative z-10 mt-8 md:mt-16">
-          <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-[1.1] mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#84cc16] via-emerald-400 to-cyan-400">
-              Desenvolvimento
-            </span>
-            <br />
-            <span className="text-zinc-100">enxuto.</span>
-          </h1>
+        <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-12 lg:gap-20 relative z-10 mt-16 md:mt-24 px-4 md:px-0">
+          
+          <div className="flex-1 flex flex-col items-center md:items-start max-w-3xl md:max-w-none">
+            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold tracking-tight leading-[1.1] mb-6 md:leading-[1.1]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#84cc16] via-emerald-400 to-cyan-400">
+                Desenvolvimento
+              </span>
+              <br />
+              <span className="text-zinc-100">enxuto.</span>
+            </h1>
 
-          <p className="text-base md:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-12 font-light">
-            Ajudo desenvolvedores e empresas a escalar utilizando código seguro, performance e arquitetura limpa. Foco total nas suas regras de negócio.
-          </p>
+            <p className="text-base md:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-12 font-light md:mx-0 mx-auto">
+              Ajudo desenvolvedores e empresas a escalar utilizando código seguro, performance e arquitetura limpa. Foco total nas suas regras de negócio.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-5 mb-20 md:mb-32">
-            <a 
-              href="#contato" 
-              onClick={scrollToContact}
-              className="group relative px-8 py-3.5 rounded-full bg-transparent text-white font-medium overflow-hidden border border-zinc-700 hover:border-[#84cc16] transition-all duration-500 flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(132,204,22,0)] hover:shadow-[0_0_20px_rgba(132,204,22,0.2)]"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#84cc16]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <span className="relative z-10">Solicitar orçamento</span>
-              <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-            </a>
-
-            <Link href="/sobre" className="px-8 py-3.5 rounded-full border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-500 hover:bg-zinc-900/50 transition-all duration-300 flex items-center justify-center">
-              Sobre
-            </Link>
-            
-            <Link href="/portfolio" className="px-8 py-3.5 rounded-full border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-500 hover:bg-zinc-900/50 transition-all duration-300 flex items-center justify-center">
-              Portfólio
-            </Link>
+            {/* BOTÃO CTA MELHORADO: Maior, gradiente e destaque premium */}
+            <div className="flex flex-col sm:flex-row gap-5 mb-16 md:mb-0 justify-center md:justify-start">
+              <a 
+                href="#contato" 
+                onClick={scrollToContact}
+                className="group relative px-10 py-4 rounded-full bg-gradient-to-r from-[#84cc16] to-[#0ea5e9] text-zinc-950 font-bold overflow-hidden transition-all duration-500 flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(132,204,22,0.25)] hover:shadow-[0_0_45px_rgba(132,204,22,0.45)] hover:scale-105"
+              >
+                <span className="relative z-10 text-lg">Solicitar orçamento</span>
+                <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1.5 transition-transform" />
+              </a>
+            </div>
           </div>
 
-          <div className="relative w-full flex justify-center mt-auto">
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#84cc16]/10 blur-[80px] rounded-full" />
-             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border border-zinc-800/60 bg-zinc-900 group shadow-2xl z-10">
+          <div className="flex-1 flex justify-center md:justify-end relative mt-16 md:mt-0">
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#84cc16]/15 blur-[90px] rounded-full pointer-events-none" />
+             
+             {/* FOTO COM EFEITO DE ESMAECIMENTO (Fade nas bordas) */}
+             <div className="relative w-72 h-72 md:w-[350px] md:h-[350px] rounded-full overflow-hidden border border-zinc-800/40 bg-zinc-900 group shadow-2xl z-10 transition-transform duration-500 hover:rotate-1">
                <Image 
                   src="/perfil.jpg" 
                   alt="Leandro Veiga" 
                   fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                  className="object-cover opacity-90 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
                   priority
                 />
+                {/* Sombra interna para criar o esmaecimento nas bordas da foto */}
+                <div className="absolute inset-0 rounded-full shadow-[inset_0_0_60px_rgba(5,5,5,0.9)] pointer-events-none transition-opacity duration-1000 group-hover:opacity-50" />
              </div>
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO 2: FORMULÁRIO DE CONTATO */}
-      <section id="contato" className="w-full min-h-screen flex flex-col items-center justify-center px-6 py-24 relative z-10">
+      {/* SEÇÃO 2: FORMULÁRIO DE CONTATO (Ajustado o padding bottom para pb-32) */}
+      <section id="contato" className="w-full min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-32 relative z-10">
         <div className="w-full max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-zinc-100 tracking-tight">Vamos conversar.</h2>
@@ -208,7 +212,6 @@ export default function Home() {
               <textarea name="Mensagem" required rows={4} placeholder="Como posso ajudar no seu projeto?" className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-[#84cc16]/50 focus:ring-1 focus:ring-[#84cc16]/50 transition-all resize-none"></textarea>
             </div>
 
-            {/* Aviso visual que some após 5 segundos */}
             {statusMessage && (
               <div className="flex items-center gap-2 p-4 rounded-xl bg-[#84cc16]/10 border border-[#84cc16]/30 text-[#84cc16] text-sm animate-fade-in">
                 <CheckCircle2 size={18} className="shrink-0" />
@@ -222,8 +225,8 @@ export default function Home() {
             </button>
           </form>
 
-          {/* Botão extra de voltar ao topo fixado logo abaixo do formulário */}
-          <div className="mt-12 flex justify-center">
+          {/* Botão de voltar ao topo mais afastado do limite inferior da página */}
+          <div className="mt-16 mb-8 flex justify-center">
             <button 
               onClick={scrollToTop} 
               className="flex items-center gap-2 text-zinc-500 hover:text-[#84cc16] transition-colors text-sm font-medium group"
@@ -236,7 +239,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BOTÃO FLUTUANTE DE VOLTAR AO TOPO (Mantido intacto) */}
+      {/* BOTÃO FLUTUANTE DE VOLTAR AO TOPO */}
       {showScrollTop && (
         <button 
           onClick={scrollToTop}
