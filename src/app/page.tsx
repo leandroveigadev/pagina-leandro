@@ -10,7 +10,6 @@ export default function Home() {
   const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Lógica de Scroll e Formulário Mantida 100% Intacta
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -82,11 +81,10 @@ export default function Home() {
     <main className="bg-[#050505] text-white flex flex-col items-center relative overflow-x-hidden font-sans selection:bg-[#84cc16] selection:text-black">
       
       {/* SEÇÃO 1: HERO */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-12">
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 pt-24 pb-12">
         <div className="absolute top-[10%] left-[15%] w-96 h-96 rounded-full bg-[#84cc16]/10 blur-[130px] pointer-events-none" />
         <div className="absolute bottom-[10%] right-[15%] w-[500px] h-[500px] rounded-full bg-cyan-600/10 blur-[160px] pointer-events-none" />
 
-        {/* Ícones flutuantes reposicionados para não sobrepor a foto */}
         <div className="absolute top-[25%] left-[5%] md:left-[10%] w-16 h-16 rounded-2xl bg-zinc-900/40 border border-zinc-800/50 backdrop-blur-md flex items-center justify-center animate-pulse shadow-2xl hidden md:flex z-20">
           <Code2 className="text-[#84cc16]/50" size={28} />
         </div>
@@ -94,18 +92,18 @@ export default function Home() {
           <Database className="text-cyan-400/50" size={32} />
         </div>
         
-        {/* HEADER ATUALIZADO: Links "Sobre" e "Portfólio" integrados ao topo */}
-        <header className="absolute top-0 left-0 w-full flex justify-between items-center px-8 py-6 text-sm font-medium z-50">
-           <div className="text-white text-lg font-bold tracking-widest">
+        {/* HEADER */}
+        <header className="absolute top-0 left-0 w-full flex justify-between items-center px-4 sm:px-8 py-6 text-sm font-medium z-50">
+           <div className="text-white text-lg font-bold tracking-widest shrink-0">
              Tecno<span className="text-[#84cc16]">logia</span>
            </div>
-           <nav className="flex items-center gap-8 text-zinc-400">
+           <nav className="flex items-center gap-6 md:gap-8 text-zinc-400">
              <div className="hidden md:flex gap-6 mr-4">
                <Link href="/sobre" className="hover:text-white hover:text-[#84cc16] transition-colors duration-300">Sobre</Link>
                <Link href="/portfolio" className="hover:text-white hover:text-[#84cc16] transition-colors duration-300">Portfólio</Link>
              </div>
              
-             <div className="flex gap-4 border-l border-zinc-800 pl-6">
+             <div className="flex gap-4 md:border-l md:border-zinc-800 md:pl-6">
                <a href="https://www.instagram.com/leandrooveiga/" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:scale-110 transition-all duration-300">
                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                </a>
@@ -116,10 +114,12 @@ export default function Home() {
            </nav>
         </header>
 
-        <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-12 lg:gap-20 relative z-10 mt-16 md:mt-24 px-4 md:px-0">
+        {/* CONTAINER DO CONTEÚDO PRINCIPAL (Espaçamentos Corrigidos) */}
+        <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-12 lg:gap-20 relative z-10 mt-16 md:mt-24">
           
-          <div className="flex-1 flex flex-col items-center md:items-start max-w-3xl md:max-w-none">
-            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold tracking-tight leading-[1.1] mb-6 md:leading-[1.1]">
+          <div className="flex-1 flex flex-col items-center md:items-start w-full">
+            {/* TÍTULO CORRIGIDO PARA MOBILE (text-4xl, break-words) */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold tracking-tight leading-[1.1] mb-6 md:leading-[1.1] break-words w-full">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#84cc16] via-emerald-400 to-cyan-400">
                 Desenvolvimento
               </span>
@@ -127,16 +127,15 @@ export default function Home() {
               <span className="text-zinc-100">enxuto.</span>
             </h1>
 
-            <p className="text-base md:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-12 font-light md:mx-0 mx-auto">
+            <p className="text-base md:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-10 md:mb-12 font-light px-2 sm:px-0">
               Ajudo desenvolvedores e empresas a escalar utilizando código seguro, performance e arquitetura limpa. Foco total nas suas regras de negócio.
             </p>
 
-            {/* BOTÃO CTA MELHORADO: Maior, gradiente e destaque premium */}
-            <div className="flex flex-col sm:flex-row gap-5 mb-16 md:mb-0 justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row gap-5 mb-12 md:mb-0 justify-center md:justify-start w-full sm:w-auto px-4 sm:px-0">
               <a 
                 href="#contato" 
                 onClick={scrollToContact}
-                className="group relative px-10 py-4 rounded-full bg-gradient-to-r from-[#84cc16] to-[#0ea5e9] text-zinc-950 font-bold overflow-hidden transition-all duration-500 flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(132,204,22,0.25)] hover:shadow-[0_0_45px_rgba(132,204,22,0.45)] hover:scale-105"
+                className="group relative w-full sm:w-auto px-10 py-4 rounded-full bg-gradient-to-r from-[#84cc16] to-[#0ea5e9] text-zinc-950 font-bold overflow-hidden transition-all duration-500 flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(132,204,22,0.25)] hover:shadow-[0_0_45px_rgba(132,204,22,0.45)] hover:scale-105"
               >
                 <span className="relative z-10 text-lg">Solicitar orçamento</span>
                 <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1.5 transition-transform" />
@@ -144,11 +143,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex-1 flex justify-center md:justify-end relative mt-16 md:mt-0">
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#84cc16]/15 blur-[90px] rounded-full pointer-events-none" />
+          <div className="flex-1 flex justify-center md:justify-end relative mt-8 md:mt-0">
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] bg-[#84cc16]/15 blur-[90px] rounded-full pointer-events-none" />
              
-             {/* FOTO COM EFEITO DE ESMAECIMENTO (Fade nas bordas) */}
-             <div className="relative w-72 h-72 md:w-[350px] md:h-[350px] rounded-full overflow-hidden border border-zinc-800/40 bg-zinc-900 group shadow-2xl z-10 transition-transform duration-500 hover:rotate-1">
+             <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-[350px] md:h-[350px] rounded-full overflow-hidden border border-zinc-800/40 bg-zinc-900 group shadow-2xl z-10 transition-transform duration-500 hover:rotate-1">
                <Image 
                   src="/perfil.jpg" 
                   alt="Leandro Veiga" 
@@ -156,22 +154,21 @@ export default function Home() {
                   className="object-cover opacity-90 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
                   priority
                 />
-                {/* Sombra interna para criar o esmaecimento nas bordas da foto */}
                 <div className="absolute inset-0 rounded-full shadow-[inset_0_0_60px_rgba(5,5,5,0.9)] pointer-events-none transition-opacity duration-1000 group-hover:opacity-50" />
              </div>
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO 2: FORMULÁRIO DE CONTATO (Ajustado o padding bottom para pb-32) */}
-      <section id="contato" className="w-full min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-32 relative z-10">
+      {/* SEÇÃO 2: FORMULÁRIO DE CONTATO */}
+      <section id="contato" className="w-full min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-32 relative z-10">
         <div className="w-full max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-zinc-100 tracking-tight">Vamos conversar.</h2>
             <p className="text-zinc-400 text-lg">Preencha os dados abaixo que em breve entraremos em contato.</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-8 rounded-3xl border border-zinc-800 bg-zinc-900/40 backdrop-blur-md shadow-2xl flex flex-col gap-6">
+          <form onSubmit={handleSubmit} className="p-6 sm:p-8 rounded-3xl border border-zinc-800 bg-zinc-900/40 backdrop-blur-md shadow-2xl flex flex-col gap-6">
             
             <input type="hidden" name="access_key" value="20d5c20f-4f7a-4064-b319-836eb0288429" />
             <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
@@ -185,7 +182,7 @@ export default function Home() {
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-medium text-zinc-300 ml-1">WhatsApp</label>
                 <div className="flex gap-2">
-                  <select name="DDD" defaultValue="51" className="w-24 bg-zinc-950/50 border border-zinc-800 rounded-xl px-3 py-3 text-white focus:outline-none focus:border-[#84cc16]/50 focus:ring-1 focus:ring-[#84cc16]/50 transition-all cursor-pointer">
+                  <select name="DDD" defaultValue="51" className="w-20 sm:w-24 bg-zinc-950/50 border border-zinc-800 rounded-xl px-2 sm:px-3 py-3 text-white focus:outline-none focus:border-[#84cc16]/50 focus:ring-1 focus:ring-[#84cc16]/50 transition-all cursor-pointer">
                     {ddds.map(ddd => (
                       <option key={ddd} value={ddd} className="bg-zinc-900">({ddd})</option>
                     ))}
@@ -198,7 +195,7 @@ export default function Home() {
                 <label className="text-sm font-medium text-zinc-300 ml-1">Localização</label>
                 <div className="flex gap-2">
                   <input type="text" name="Cidade" required placeholder="Sua cidade" className="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-[#84cc16]/50 focus:ring-1 focus:ring-[#84cc16]/50 transition-all" />
-                  <select name="Estado" defaultValue="RS" className="w-24 bg-zinc-950/50 border border-zinc-800 rounded-xl px-3 py-3 text-white focus:outline-none focus:border-[#84cc16]/50 focus:ring-1 focus:ring-[#84cc16]/50 transition-all cursor-pointer">
+                  <select name="Estado" defaultValue="RS" className="w-20 sm:w-24 bg-zinc-950/50 border border-zinc-800 rounded-xl px-2 sm:px-3 py-3 text-white focus:outline-none focus:border-[#84cc16]/50 focus:ring-1 focus:ring-[#84cc16]/50 transition-all cursor-pointer">
                     {estados.map(uf => (
                       <option key={uf} value={uf} className="bg-zinc-900">{uf}</option>
                     ))}
@@ -225,7 +222,6 @@ export default function Home() {
             </button>
           </form>
 
-          {/* Botão de voltar ao topo mais afastado do limite inferior da página */}
           <div className="mt-16 mb-8 flex justify-center">
             <button 
               onClick={scrollToTop} 
